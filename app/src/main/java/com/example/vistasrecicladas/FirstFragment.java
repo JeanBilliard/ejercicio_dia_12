@@ -36,6 +36,20 @@ private List <String> dataList = new ArrayList<>();
         mBinding.recyclerView.setAdapter(adapter);
         // le indicamos al RV como mostrar los elementos, podria >GridLayout o StaggeredLayout.
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mBinding.fab2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void OnClick(View v){
+                //añado una palabra al listado
+                dataList.add("palabra. "+ dataList.size());
+                //notificar al adaptador que ingresamos datos
+             mBinding.recyclerView.getAdapter().notifyItemInserted(dataList.size());
+             //scroll al final de la lista.
+            mBinding.recyclerView.smoothScrollToPosition(dataList.size());
+
+
+            }
+        };
     }
         private List<String> setData () {
             for (int i = 0; i  < 100; i++) {
